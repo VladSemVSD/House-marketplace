@@ -40,7 +40,6 @@ function Profile() {
         orderBy("timestamp", "desc")
       );
       const querySnap = await getDocs(q);
-      console.log(querySnap);
       let listings = [];
 
       querySnap.forEach((doc) => {
@@ -49,8 +48,6 @@ function Profile() {
           data: doc.data(),
         });
       });
-      console.log(auth.currentUser.uid);
-      console.log(listings);
       setListings(listings);
       setLoading(false);
     };
@@ -100,6 +97,8 @@ function Profile() {
       toast.success("Succesfully deleted listing");
     }
   };
+
+  const onEdit = (listingId) => navigate(`/edit-listing/${listingId}`);
 
   return (
     <div className="profile">
@@ -160,6 +159,7 @@ function Profile() {
                   listing={listing.data}
                   id={listing.id}
                   onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 ></ListingItem>
               ))}
             </ul>
