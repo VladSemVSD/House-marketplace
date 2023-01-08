@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
-} from "firebase/auth";
-import { db } from "../firebase.config";
-import { toast, ToastContainer } from "react-toastify";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
-import visibilityIcon from "../assets/svg/visibilityIcon.svg";
-import Oauth from "../components/Oauth";
+} from 'firebase/auth';
+import { db } from '../firebase.config';
+import { toast } from 'react-toastify';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
+import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import Oauth from '../components/Oauth';
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
 
   const { name, email, password } = formData;
@@ -56,11 +56,11 @@ function SignUp() {
       formDataCopy.timestamp = serverTimestamp();
 
       // Add user data to db
-      await setDoc(doc(db, "users", user.uid), formDataCopy);
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
 
-      navigate("/");
+      navigate('/');
     } catch (error) {
-      toast.error("Something went wrong with registration");
+      toast.error('Something went wrong with registration');
     }
   };
 
@@ -90,7 +90,7 @@ function SignUp() {
             />
             <div className="passwordInputDiv">
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 className="passwordInput"
                 placeholder="password"
                 id="password"

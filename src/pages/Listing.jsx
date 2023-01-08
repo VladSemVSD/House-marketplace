@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/bundle";
-import { getDoc, doc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { db } from "../firebase.config";
-import Spinner from "../components/Spinner";
-import shareIcon from "../assets/svg/shareIcon.svg";
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/bundle';
+import { getDoc, doc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { db } from '../firebase.config';
+import Spinner from '../components/Spinner';
+import shareIcon from '../assets/svg/shareIcon.svg';
 
 function Listing() {
   const [listing, setListing] = useState(null);
@@ -21,7 +21,7 @@ function Listing() {
 
   useEffect(() => {
     const fetchListing = async () => {
-      const docRef = doc(db, "listings", params.listingId);
+      const docRef = doc(db, 'listings', params.listingId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -49,8 +49,8 @@ function Listing() {
             <div
               style={{
                 background: `url(${listing.imageUrls[index]}) center no-repeat`,
-                backgroundSize: "cover",
-                minHeight: "20rem",
+                backgroundSize: 'cover',
+                minHeight: '20rem',
               }}
               className="swiperSlideDiv"
             ></div>
@@ -77,14 +77,14 @@ function Listing() {
           {listing.offer
             ? listing.discountedPrice //RegEx to add coma after every thousand
                 .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             : listing.regularPrice
                 .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         </p>
         <p className="listingLocation">{listing.location}</p>
         <p className="listingType">
-          For {listing.type === "rent" ? "Rent" : "Sale"}
+          For {listing.type === 'rent' ? 'Rent' : 'Sale'}
         </p>
         {listing.offer && (
           <p className="discountPrice">
@@ -95,21 +95,21 @@ function Listing() {
           <li>
             {listing.bedrooms > 1
               ? `${listing.bedrooms} Bedrooms`
-              : "1. Bedroom"}
+              : '1. Bedroom'}
           </li>
           <li>
             {listing.bathrooms > 1
               ? `${listing.bathrooms} Bathrooms`
-              : "1 Bathrooms"}
+              : '1 Bathrooms'}
           </li>
-          <li>{listing.parking && "Parking spot"}</li>
-          <li>{listing.furnished && "Furmished"}</li>
+          <li>{listing.parking && 'Parking spot'}</li>
+          <li>{listing.furnished && 'Furmished'}</li>
         </ul>
         <p className="listingLocationTitle">Loacation</p>
 
         <div className="leafletContainer">
           <MapContainer
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: '100%', width: '100%' }}
             center={[listing.geolocation.lat, listing.geolocation.lng]}
             zoom={13}
             scrollWheelZoom={false}

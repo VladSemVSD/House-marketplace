@@ -1,19 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/Navbar";
-import PrivateRoute from "./components/PrivateRoute";
-import Category from "./pages/Category";
-import Explore from "./pages/Explore";
-import ForgotPassword from "./pages/ForgotPassword";
-import Offers from "./pages/Offers";
-import Profile from "./pages/Profile";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import CreateListing from "./pages/CreateListing";
-import Listing from "./pages/Listing";
-import ContactLandlord from "./pages/ContactLandlord";
-import EditListing from "./pages/EditListing";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Navbar from './components/Navbar';
+import PrivateRoute from './components/PrivateRoute';
+import Category from './pages/Category';
+import Explore from './pages/Explore';
+import ForgotPassword from './pages/ForgotPassword';
+import Offers from './pages/Offers';
+import Profile from './pages/Profile';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import CreateListing from './pages/CreateListing';
+import Listing from './pages/Listing';
+import ContactLandlord from './pages/ContactLandlord';
+import EditListing from './pages/EditListing';
 
 function App() {
   return (

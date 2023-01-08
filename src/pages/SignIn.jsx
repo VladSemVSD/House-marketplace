@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
-import visibilityIcon from "../assets/svg/visibilityIcon.svg";
-import Oauth from "../components/Oauth";
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
+import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import Oauth from '../components/Oauth';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const { email, password } = formData;
@@ -37,10 +37,10 @@ function SignIn() {
       );
 
       if (userCredential.user) {
-        navigate("/");
+        navigate('/');
       }
     } catch (error) {
-      toast.error("Bad User Credentials");
+      toast.error('Bad User Credentials');
     }
   };
 
@@ -62,7 +62,7 @@ function SignIn() {
             />
             <div className="passwordInputDiv">
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 className="passwordInput"
                 placeholder="password"
                 id="password"

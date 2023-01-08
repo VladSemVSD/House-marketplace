@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { getAuth, updateProfile } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { db } from "../firebase.config";
+import { useState, useEffect } from 'react';
+import { getAuth, updateProfile } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { db } from '../firebase.config';
 import {
   updateDoc,
   doc,
@@ -11,11 +11,11 @@ import {
   where,
   orderBy,
   deleteDoc,
-} from "firebase/firestore";
-import { toast } from "react-toastify";
-import arrowRight from "../assets/svg/keyboardArrowRightIcon.svg";
-import homeIcon from "../assets/svg/homeIcon.svg";
-import ListingItem from "../components/ListingItem";
+} from 'firebase/firestore';
+import { toast } from 'react-toastify';
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg';
+import homeIcon from '../assets/svg/homeIcon.svg';
+import ListingItem from '../components/ListingItem';
 
 function Profile() {
   const auth = getAuth();
@@ -33,11 +33,11 @@ function Profile() {
 
   useEffect(() => {
     const fetchUserListngs = async () => {
-      const listingsRef = collection(db, "listings");
+      const listingsRef = collection(db, 'listings');
       const q = query(
         listingsRef,
-        where("userRef", "==", auth.currentUser.uid),
-        orderBy("timestamp", "desc")
+        where('userRef', '==', auth.currentUser.uid),
+        orderBy('timestamp', 'desc')
       );
       const querySnap = await getDocs(q);
       let listings = [];
@@ -58,7 +58,7 @@ function Profile() {
   const navigate = useNavigate();
   const onLogout = () => {
     auth.signOut();
-    navigate("/");
+    navigate('/');
   };
 
   const onSubmit = async () => {
@@ -71,12 +71,12 @@ function Profile() {
       }
 
       // Upadte in firestore
-      const userRef = doc(db, "users", auth.currentUser.uid);
+      const userRef = doc(db, 'users', auth.currentUser.uid);
       await updateDoc(userRef, {
         name,
       });
     } catch (error) {
-      toast.error("Could not update profile details");
+      toast.error('Could not update profile details');
     }
   };
 
@@ -88,13 +88,13 @@ function Profile() {
   };
 
   const onDelete = async (listingId) => {
-    if (window.confirm("Are you sure you want to delete?")) {
-      await deleteDoc(doc(db, "listings", listingId));
+    if (window.confirm('Are you sure you want to delete?')) {
+      await deleteDoc(doc(db, 'listings', listingId));
       const updatedListings = listings.filter(
         (listing) => listing.id !== listingId
       );
       setListings(updatedListings);
-      toast.success("Succesfully deleted listing");
+      toast.success('Succesfully deleted listing');
     }
   };
 
@@ -118,7 +118,7 @@ function Profile() {
               setChangeDetails((prevState) => !prevState);
             }}
           >
-            {changeDetails ? "done" : "change"}
+            {changeDetails ? 'done' : 'change'}
           </p>
         </div>
 
@@ -126,7 +126,7 @@ function Profile() {
           <form action="">
             <input
               type="text"
-              className={!changeDetails ? "profileName" : "profileNameActive"}
+              className={!changeDetails ? 'profileName' : 'profileNameActive'}
               id="name"
               disabled={!changeDetails}
               value={name}
@@ -134,7 +134,7 @@ function Profile() {
             />
             <input
               type="text"
-              className={!changeDetails ? "profileEmail" : "profileEmailActive"}
+              className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
               id="email"
               disabled={!changeDetails}
               value={email}
