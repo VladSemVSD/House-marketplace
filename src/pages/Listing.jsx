@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
@@ -89,7 +88,7 @@ function Listing() {
 
         {auth.currentUser?.uid !== listing.userRef && (
           <Link
-            to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`}
+            to={`/contact/${listing.userRef}?listingName=${listing.name}`}
             className="primaryButton"
           >
             Contact Landlord
